@@ -1,3 +1,5 @@
+var timer = 60 ;
+var hitrn = 0 ;
 function bubblestart(){
     clutter = "" ;
     for (var i = 1 ; i <=133 ; i++){
@@ -6,4 +8,39 @@ function bubblestart(){
     }
     document.querySelector("#panel2").innerHTML = clutter ;
 }
+function runTime(){
+    var timervalue = setInterval(function(){
+         if(timer>0){
+             timer--;
+             document.querySelector("#timerval").textContent = timer
+         }
+         else{
+             clearInterval(timervalue);
+         }
+  
+     },1000)
+ }
+function getNewHit(){
+     hitrn = Math.floor(Math.random()*10) ;
+    document.querySelector("#hitval").textContent = hitrn ;
+}
+var score = 0 ;
+function getNewScore(){
+    score+=10 ;
+    document.querySelector("#scoreval").textContent = score;
+}
+document.querySelector("#panel2").addEventListener("click",function(dets){
+      var clickedNumber = Number(dets.target.textContent);
+      if(clickedNumber === hitrn){
+        getNewScore();
+        bubblestart();
+        getNewHit();
+      }
+})
+
 bubblestart();
+runTime();
+getNewHit();
+
+
+
