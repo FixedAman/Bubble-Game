@@ -1,4 +1,4 @@
-var timer = 60 ;
+var timer = 1 ;
 var hitrn = 0 ;
 function bubblestart(){
     clutter = "" ;
@@ -16,6 +16,7 @@ function runTime(){
          }
          else{
              clearInterval(timervalue);
+            document.querySelector("#panel2").innerHTML = `<h1>Game Over</h>`
          }
   
      },1000)
